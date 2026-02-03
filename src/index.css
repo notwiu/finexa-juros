@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* FINEXA Soluções Design System
+   Premium financial/legal aesthetic
+   Dark blue dominant, gold accents, clean typography
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors - extracted from logo */
+    --finexa-blue: 209 28% 41%;
+    --finexa-blue-dark: 215 45% 18%;
+    --finexa-blue-deep: 218 50% 12%;
+    --finexa-sage: 120 15% 60%;
+    --finexa-gold: 43 65% 47%;
+    --finexa-gold-light: 43 70% 55%;
+    
+    /* Semantic tokens */
+    --background: 0 0% 100%;
+    --foreground: 218 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 50% 12%;
+
+    --primary: 215 45% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 218 50% 12%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 43 65% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 43 65% 47%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(215 45% 18% / 0.95), hsl(218 50% 12% / 0.9));
+    --gradient-gold: linear-gradient(135deg, hsl(43 65% 47%), hsl(43 70% 55%));
+    --gradient-card: linear-gradient(180deg, hsl(215 45% 18%), hsl(218 50% 12%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(215 45% 18% / 0.15);
+    --shadow-card: 0 10px 40px -10px hsl(215 45% 18% / 0.2);
+    --shadow-gold: 0 8px 30px -8px hsl(43 65% 47% / 0.4);
+    
+    /* Sidebar - kept for compatibility */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 218 50% 12%;
+    --foreground: 0 0% 98%;
+    --card: 215 45% 18%;
+    --card-foreground: 0 0% 98%;
+    --popover: 215 45% 18%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 43 65% 47%;
+    --primary-foreground: 218 50% 12%;
+    --secondary: 215 30% 25%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 30% 25%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 43 65% 47%;
+    --accent-foreground: 218 50% 12%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 30% 25%;
+    --input: 215 30% 25%;
+    --ring: 43 65% 47%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  /* Gold accent button */
+  .btn-gold {
+    @apply bg-accent text-accent-foreground font-semibold px-8 py-4 rounded-lg;
+    box-shadow: var(--shadow-gold);
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px -8px hsl(43 65% 47% / 0.5);
+  }
+
+  /* Outline button for hero */
+  .btn-outline-light {
+    @apply border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-lg bg-white/5 backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-light:hover {
+    @apply bg-white/15 border-white/50;
+  }
+
+  /* Stat card in hero */
+  .stat-card {
+    @apply bg-white/10 backdrop-blur-md rounded-xl px-6 py-4 border border-white/20;
+  }
+
+  /* Feature card */
+  .feature-card {
+    @apply bg-white rounded-2xl p-6 shadow-lg border border-border;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px -15px hsl(215 45% 18% / 0.25);
+  }
+
+  /* Service card with icon header */
+  .service-card {
+    @apply bg-white rounded-2xl overflow-hidden border border-border;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .service-card-header {
+    @apply bg-primary py-8 flex items-center justify-center;
+    background: var(--gradient-card);
+  }
+
+  /* Section styling */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground text-center max-w-3xl mx-auto mt-4;
+  }
+
+  /* Calculator result panel */
+  .result-panel {
+    @apply rounded-2xl p-8;
+    background: var(--gradient-card);
+  }
+
+  /* Process step connector */
+  .step-connector {
+    @apply hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-accent;
+  }
+
+  /* Testimonial card */
+  .testimonial-card {
+    @apply bg-white rounded-2xl p-6 border border-border;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-card);
+  }
+
+  /* Footer */
+  .footer-section {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Benefit badge */
+  .benefit-badge {
+    @apply flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Gold text */
+  .text-gold {
+    color: hsl(var(--accent));
+  }
+
+  /* Background utilities */
+  .bg-finexa-blue {
+    background-color: hsl(var(--finexa-blue));
+  }
+
+  .bg-finexa-blue-dark {
+    background-color: hsl(var(--finexa-blue-dark));
+  }
+
+  .bg-finexa-blue-deep {
+    background-color: hsl(var(--finexa-blue-deep));
+  }
+
+  .bg-finexa-sage {
+    background-color: hsl(var(--finexa-sage));
+  }
+}
